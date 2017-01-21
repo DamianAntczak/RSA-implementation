@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
+using System.Xml.Linq;
 
 namespace RSA
 {
@@ -129,6 +130,44 @@ namespace RSA
                 }
             }
 
+        }
+
+        private void bGenerateXOR_Click(object sender, EventArgs e)
+        {
+
+            var md5 = System.Security.Cryptography.MD5.Create();
+
+            var inputBytes = Encoding.ASCII.GetBytes(text.Text);
+            var hashBytes = md5.ComputeHash(inputBytes);
+
+            var stringBuilder = new StringBuilder();
+
+            for( var i = 0; i < hashBytes.Length; i++)
+            {
+                stringBuilder.Append(hashBytes[i].ToString("X2"));
+            }
+
+            text.Text = stringBuilder.ToString();
+        }
+
+        private void bGenerateSign_Click(object sender, EventArgs e)
+        {
+            var signXML = new XElement("sign",
+                new XElement("public",new XAttribute("e",rsa.e),new XAttribute("n",rsa.n)),
+                new XElement("hash",text2.Text));
+
+            var signString = signXML.ToString();
+
+            SaveFileDialog sf = new SaveFileDialog();
+            sf.FileName = "cert.xml";
+
+            if(sf.ShowDialog() == DialogResult.OK)
+            {
+                System.IO.StreamWriter file = new System.IO.StreamWriter(sf.FileName);
+                file.WriteLine(signString);
+                file.Close();
+            }
+            
         }
     }
 }

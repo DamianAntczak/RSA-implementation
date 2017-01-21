@@ -44,6 +44,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.bReadFile = new System.Windows.Forms.Button();
+            this.bGenerateXOR = new System.Windows.Forms.Button();
+            this.bGenerateSign = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -75,7 +77,7 @@
             // 
             this.button1.Location = new System.Drawing.Point(12, 168);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(89, 23);
             this.button1.TabIndex = 2;
             this.button1.Text = "Szyfruj";
             this.button1.UseVisualStyleBackColor = true;
@@ -202,17 +204,39 @@
             // 
             this.bReadFile.Location = new System.Drawing.Point(12, 1);
             this.bReadFile.Name = "bReadFile";
-            this.bReadFile.Size = new System.Drawing.Size(75, 23);
+            this.bReadFile.Size = new System.Drawing.Size(89, 23);
             this.bReadFile.TabIndex = 5;
             this.bReadFile.Text = "Wczytaj plik";
             this.bReadFile.UseVisualStyleBackColor = true;
             this.bReadFile.Click += new System.EventHandler(this.bReadFile_Click);
+            // 
+            // bGenerateXOR
+            // 
+            this.bGenerateXOR.Location = new System.Drawing.Point(107, 1);
+            this.bGenerateXOR.Name = "bGenerateXOR";
+            this.bGenerateXOR.Size = new System.Drawing.Size(93, 23);
+            this.bGenerateXOR.TabIndex = 6;
+            this.bGenerateXOR.Text = "Generuj Hash";
+            this.bGenerateXOR.UseVisualStyleBackColor = true;
+            this.bGenerateXOR.Click += new System.EventHandler(this.bGenerateXOR_Click);
+            // 
+            // bGenerateSign
+            // 
+            this.bGenerateSign.Location = new System.Drawing.Point(107, 168);
+            this.bGenerateSign.Name = "bGenerateSign";
+            this.bGenerateSign.Size = new System.Drawing.Size(93, 23);
+            this.bGenerateSign.TabIndex = 7;
+            this.bGenerateSign.Text = "Generuj Podpis";
+            this.bGenerateSign.UseVisualStyleBackColor = true;
+            this.bGenerateSign.Click += new System.EventHandler(this.bGenerateSign_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(455, 400);
+            this.Controls.Add(this.bGenerateSign);
+            this.Controls.Add(this.bGenerateXOR);
             this.Controls.Add(this.bReadFile);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.button2);
@@ -248,6 +272,8 @@
         private System.Windows.Forms.TextBox text_priv_n;
         private System.Windows.Forms.TextBox text_priv_d;
         private System.Windows.Forms.Button bReadFile;
+        private System.Windows.Forms.Button bGenerateXOR;
+        private System.Windows.Forms.Button bGenerateSign;
     }
 }
 
