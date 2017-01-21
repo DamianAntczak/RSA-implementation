@@ -101,6 +101,34 @@ namespace RSA
             text_pub_n.Text = text_priv_n.Text;
         }
 
+        private void bReadFile_Click(object sender, EventArgs e)
+        {
+            System.IO.Stream myStream = null;
 
+            var dlg = new OpenFileDialog();
+            dlg.Filter = "Plik tekstowe (.txt)|*.txt";
+            dlg.Multiselect = false;
+
+            if(dlg.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    if((myStream = dlg.OpenFile()) != null)
+                    {
+                        using (myStream)
+                        {
+                            var myStreamReader = new System.IO.StreamReader(myStream);
+                            String line = myStreamReader.ReadToEnd();
+                            text.Text = line;
+                        }
+                    }
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show("Błąd: Nie można odczytać pliku z dysku"+ex.ToString());
+                }
+            }
+
+        }
     }
 }
